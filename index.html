@@ -93,14 +93,14 @@
 <body>
 
 <div class="toggle-buttons">
-  <button id="fieldBtn" class="active">توجيهات الميدان</button>
-  <button id="jobBtn">توجيهات التوظيف</button>
+  <button type="button" id="fieldBtn" class="active">توجيهات الميدان</button>
+  <button type="button" id="jobBtn">توجيهات التوظيف</button>
 </div>
 
 <!-- توجيهات الميدان -->
 <div class="container active" id="fieldContainer">
   <h1>🚒 توجيهات الميدان 🚒</h1>
-  <h2>⚙️اختصر اسمك الميداني⚙️</h2>
+  <h2>⚙️ اختصر اسمك الميداني ⚙️</h2>
 
   <input type="text" id="nameInputField" placeholder="ادخل اسمك">
   <input type="text" id="numberInputField" placeholder="كودك الميداني مثال (G-110)">
@@ -112,8 +112,7 @@
     <option value="اشراف منطقه متدرب">اشراف منطقه متدرب</option>
     <option value="اشراف ميداني">اشراف ميداني</option>
     <option value="اشراف عام">اشراف عام</option>
-    <!-- الإضافة الوحيدة المطلوبة -->
-    <option value="طوارئ وإنقاذ "> طوارئ وانقاذ </option>
+    <option value="طوارئ وإنقاذ">طوارئ وإنقاذ</option>
   </select>
 
   <select id="subRegion" style="display:none;">
@@ -166,15 +165,15 @@
     <option value="فني خدمات طرق">فني خدمات طرق</option>
   </select>
 
-  <button class="generate" onclick="generateResult()">🗞 اضغط هنا لأظهار اسمك 🗞</button>
+  <button type="button" class="generate" onclick="generateResult()">🗞 اضغط هنا لأظهار اسمك 🗞</button>
   <div class="output" id="resultOutput"></div>
-  <button class="copy-btn" onclick="copyText('resultOutput')">🔗 اضغط هنا للنسخ 🔗</button>
+  <button type="button" class="copy-btn" onclick="copyText('resultOutput')">🔗 اضغط هنا للنسخ 🔗</button>
 </div>
 
 <!-- توجيهات التوظيف -->
 <div class="container" id="jobContainer">
-  <h1>📜 توجيهات التوظيف📜 </h1>
-  <h2>📌اختصر توجيهك في التوظيف 📌</h2>
+  <h1>📜 توجيهات التوظيف 📜</h1>
+  <h2>📌 اختصر توجيهك في التوظيف 📌</h2>
 
   <input type="text" id="nameInput" placeholder="ادخل اسمك">
   <input type="text" id="numberInput" placeholder="كودك الميداني مثال (G-110)">
@@ -208,9 +207,9 @@
     <option>باص 4</option>
   </select>
 
-  <button class="generate" onclick="generateNickname()">🗞 اضغط هنا لأظهار اسمك 🗞</button>
+  <button type="button" class="generate" onclick="generateNickname()">🗞 اضغط هنا لأظهار اسمك 🗞</button>
   <div class="output" id="output"></div>
-  <button class="copy-btn" onclick="copyText('output')">🔗 اضغط هنا للنسخ 🔗</button>
+  <button type="button" class="copy-btn" onclick="copyText('output')">🔗 اضغط هنا للنسخ 🔗</button>
 </div>
 
 <script>
@@ -225,13 +224,13 @@
     }
   }
 
-  // Toggle buttons
   document.getElementById("fieldBtn").addEventListener("click", function(){
     document.getElementById("fieldContainer").classList.add("active");
     document.getElementById("jobContainer").classList.remove("active");
     this.classList.add("active");
     document.getElementById("jobBtn").classList.remove("active");
   });
+
   document.getElementById("jobBtn").addEventListener("click", function(){
     document.getElementById("jobContainer").classList.add("active");
     document.getElementById("fieldContainer").classList.remove("active");
@@ -243,13 +242,10 @@
     const rankSelect = document.getElementById("rankSelect");
 
     rankSelect.addEventListener("change", function () {
-      // إظهار/إخفاء القوائم بناءً على الرتبة المختارة
       document.getElementById("subRegion").style.display =
         (this.value === "اشراف منطقه") ? "block" : "none";
-
       document.getElementById("subRegionTrainee").style.display =
         (this.value === "اشراف منطقه متدرب") ? "block" : "none";
-
       document.getElementById("regionNames").style.display =
         (this.value === "فني") ? "block" : "none";
     });
@@ -287,7 +283,6 @@
 
     num1.addEventListener("input", function () { handleGPrefix(this); });
     num2.addEventListener("input", function () { handleGPrefix(this); });
-
     num1.addEventListener("paste", function () { setTimeout(() => handleGPrefix(this), 0); });
     num2.addEventListener("paste", function () { setTimeout(() => handleGPrefix(this), 0); });
   });
@@ -307,8 +302,8 @@
     const controlChecked = document.getElementById("controlUnit").checked;
     const controlVal = document.getElementById("controlOptions").value;
 
-    if (!number) {
-      document.getElementById("resultOutput").innerText = "يرجى ملء الكود.";
+    if (!name || !number) {
+      document.getElementById("resultOutput").innerText = "يرجى ملء الاسم والكود.";
       return;
     }
 
