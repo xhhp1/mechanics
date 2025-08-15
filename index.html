@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>SRT — توجيهات</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: body {
+  background: url("https://raw.githubusercontent.com/xhhp1/srtimge/main/mechan.png") no-repeat center center fixed;
+  background-size: cover;
+}
+ no-repeat center center fixed;
+    background-size: cover;
+    color: #e0ca51;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    direction: rtl;
+  }
+  .toggle-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  .toggle-buttons button {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background: #e0ca51;
+    color: #111;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .toggle-buttons button.active {
+    background: #c6b142;
+  }
+  .container {
+    background-color: rgba(27, 27, 27, 0.85);
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    display: none;
+  }
+  .container.active {
+    display: block;
+  }
+  h1 { text-align: center; color: #e0ca51; margin: 0 0 8px 0; }
+  h2 { text-align: center; color: #e0ca51; font-size: 0.95rem; margin: 0 0 12px 0; }
+  input, select, button {
+    width: 100%;
+    padding: 8px 10px;
+    margin: 6px 0;
+    border-radius: 6px;
+    border: none;
+    box-sizing: border-box;
+  }
+  input, select {
+    background: #2b2b2b;
+    color: #e0ca51;
+    font-size: 14px;
+  }
+  button.generate, .copy-btn {
+    background: #e0ca51;
+    color: #111;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  button.generate:hover, .copy-btn:hover {
+    background: #c6b142;
+  }
+  label { display: block; font-size: 14px; margin: 6px 0; }
+  .output {
+    background: #333;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 6px;
+    min-height: 22px;
+    color: #e0ca51;
+    font-weight: 600;
+    word-break: break-word;
+  }
+  .copy-btn {
+    margin-top: 8px;
+    padding: 8px;
+    border-radius: 6px;
+  }
+  @media (max-width: 880px) {
+    .container { width: 100%; max-width: 520px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="toggle-buttons">
+  <button id="fieldBtn" class="active">توجيهات الميدان</button>
+  <button id="jobBtn">توجيهات التوظيف</button>
+</div>
+
+<!-- توجيهات الميدان -->
+<div class="container active" id="fieldContainer">
+  <h1>🚒 توجيهات الميدان 🚒</h1>
+  <h2>⚙️اختصر اسمك الميداني⚙️</h2>
+
+  <input type="text" id="nameInputField" placeholder="ادخل اسمك">
+  <input type="text" id="numberInputField" placeholder="كودك الميداني مثال (G-110)">
+
+  <select id="rankSelect">
+    <option value="">اختر رتبتك</option>
+    <option value="فني">فني</option>
+    <option value="اشراف منطقه">اشراف منطقه</option>
+    <option value="اشراف منطقه متدرب">اشراف منطقه متدرب</option>
+    <option value="اشراف ميداني">اشراف ميداني</option>
+    <option value="اشراف عام">اشراف عام</option>
+    <option value="طوارئ وإنقاذ "> طوارئ وانقاذ </option>
+  </select>
+
+  <select id="subRegion" style="display:none;">
+    <option value="">اختر توجيهك</option>
+    <option value="اشراف منطقة لوس">اشراف منطقة لوس</option>
+    <option value="اشراف منطقة ساندي">اشراف منطقة ساندي</option>
+    <option value="اشراف منطقة بوليتو">اشراف منطقة بوليتو</option>
+    <option value="اشراف منطقة بوليتو + ساندي">اشراف منطقة بوليتو + ساندي</option>
+  </select>
+
+  <select id="subRegionTrainee" style="display:none;">
+    <option value="">اختر توجيهك</option>
+    <option value="اشراف منطقة لوس متدرب">اشراف منطقة لوس متدرب</option>
+    <option value="اشراف منطقة ساندي متدرب">اشراف منطقة ساندي متدرب</option>
+    <option value="اشراف منطقة بوليتو متدرب">اشراف منطقة بوليتو متدرب</option>
+    <option value="اشراف منطقة بوليتو + ساندي متدرب">اشراف منطقة بوليتو + ساندي متدرب</option>
+  </select>
+
+  <select id="regionNames" style="display:none;">
+    <option value="">اختر اسم توجيهك</option>
+    <option value="لوس">لوس</option>
+    <option value="ساندي">ساندي</option>
+    <option value="بوليتو">بوليتو</option>
+    <option value="جزيرة">جزيرة</option>
+    <option value="الموجه الميداني">الموجه الميداني</option>
+    <option value="نائب الموجه الميداني">نائب الموجه الميداني</option>
+    <option value="مركز الاتصالات">مركز الاتصالات</option>
+  </select>
+
+  <label><input type="checkbox" id="fleetToggle"> هل تريد إضافة خدمة الأسطول؟</label>
+  <select id="fleetBox" style="display:none;">
+    <option value="">اختر خدمة الاسطول</option>
+    <option value="اسطول لوس">اسطول لوس</option>
+    <option value="اسطول ساندي">اسطول ساندي</option>
+    <option value="اسطول بوليتو">اسطول بوليتو</option>
+    <option value="اسطول جزيرة">اسطول جزيرة</option>
+    <option value="اسطول متوسط لوس">اسطول متوسط لوس</option>
+    <option value="اسطول متوسط ساندي">اسطول متوسط ساندي</option>
+    <option value="اسطول متوسط بوليتو">اسطول متوسط بوليتو</option>
+    <option value="اسطول متوسط جزيرة">اسطول متوسط جزيرة</option>
+  </select>
+
+  <label><input type="checkbox" id="minaTech"> فني ميناء</label>
+  <label><input type="checkbox" id="masarat"> مسارات التعديل و التزويد</label>
+  <input type="text" id="masarInput" placeholder="اكتب رقم المسار فقط مثال (4)" style="display:none;">
+  <label><input type="checkbox" id="controlUnit"> وحدة تحكم</label>
+  <select id="controlOptions" style="display:none;">
+    <option value="">اختر نوع وحدة التحكم</option>
+    <option value="فني مركز تحكم">فني مركز تحكم</option>
+    <option value="فني خدمات طرق">فني خدمات طرق</option>
+  </select>
+
+  <button class="generate" onclick="generateResult()">🗞 اضغط هنا لأظهار اسمك 🗞</button>
+  <div class="output" id="resultOutput"></div>
+  <button class="copy-btn" onclick="copyText('resultOutput')">🔗 اضغط هنا للنسخ 🔗</button>
+</div>
+
+<!-- توجيهات التوظيف -->
+<div class="container" id="jobContainer">
+  <h1>📜 توجيهات التوظيف📜 </h1>
+  <h2>📌اختصر توجيهك في التوظيف 📌</h2>
+
+  <input type="text" id="nameInput" placeholder="ادخل اسمك">
+  <input type="text" id="numberInput" placeholder="كودك الميداني مثال (G-110)">
+
+  <label style="display:block; text-align:right; margin-top:6px">اختار توجيهك حسب التقرير:</label>
+  <select id="roleSelect">
+    <option value="">اختر توجيهك</option>
+    <option>نائب مدير قسم شؤون التوظيف</option>
+    <option>اشراف التوظيف</option>
+    <option>مسؤول المقابلة 1</option>
+    <option>مسؤول المقابلة 2</option>
+    <option>مسؤول المقابلة 3</option>
+    <option>مسؤول المقابلة 4</option>
+    <option>مسؤول المقابلة 5</option>
+    <option>نائب مسؤول مقابله 1</option>
+    <option>نائب مسؤول مقابله 2</option>
+    <option>نائب مسؤول مقابله 3</option>
+    <option>نائب مسؤول مقابله 4</option>
+    <option>نائب مسؤول مقابله 5</option>
+    <option>مسؤول تنظيم 1</option>
+    <option>مسؤول تنظيم 2</option>
+    <option>مسؤول تنظيم 3</option>
+    <option>مسؤول تنظيم 4</option>
+    <option>تنظيم 1</option>
+    <option>تنظيم 2</option>
+    <option>تنظيم 3</option>
+    <option>تنظيم 4</option>
+    <option>باص 1</option>
+    <option>باص 2</option>
+    <option>باص 3</option>
+    <option>باص 4</option>
+  </select>
+
+  <button class="generate" onclick="generateNickname()">🗞 اضغط هنا لأظهار اسمك 🗞</button>
+  <div class="output" id="output"></div>
+  <button class="copy-btn" onclick="copyText('output')">🔗 اضغط هنا للنسخ 🔗</button>
+</div>
+
+<script>
+  function isValidSelection(val) {
+    return val && String(val).trim() !== "" && !String(val).trim().startsWith("اختر");
+  }
+
+  function copyText(id) {
+    const text = document.getElementById(id).innerText;
+    if (text.trim()) {
+      navigator.clipboard.writeText(text);
+    }
+  }
+
+  document.getElementById("fieldBtn").addEventListener("click", function(){
+    document.getElementById("fieldContainer").classList.add("active");
+    document.getElementById("jobContainer").classList.remove("active");
+    this.classList.add("active");
+    document.getElementById("jobBtn").classList.remove("active");
+  });
+  document.getElementById("jobBtn").addEventListener("click", function(){
+    document.getElementById("jobContainer").classList.add("active");
+    document.getElementById("fieldContainer").classList.remove("active");
+    this.classList.add("active");
+    document.getElementById("fieldBtn").classList.remove("active");
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const rankSelect = document.getElementById("rankSelect");
+
+    rankSelect.addEventListener("change", function () {
+      document.getElementById("subRegion").style.display =
+        (this.value === "اشراف منطقه") ? "block" : "none";
+
+      document.getElementById("subRegionTrainee").style.display =
+        (this.value === "اشراف منطقه متدرب") ? "block" : "none";
+
+      document.getElementById("regionNames").style.display =
+        (this.value === "فني") ? "block" : "none";
+    });
+
+    document.getElementById("fleetToggle").addEventListener("change", function () {
+      document.getElementById("fleetBox").style.display = this.checked ? "block" : "none";
+    });
+
+    const minaTech = document.getElementById("minaTech");
+    const masarat = document.getElementById("masarat");
+
+    minaTech.addEventListener("change", function () {
+      if (this.checked) {
+        masarat.checked = false;
+        document.getElementById("masarInput").style.display = "none";
+      }
+    });
+
+    masarat.addEventListener("change", function () {
+      document.getElementById("masarInput").style.display = this.checked ? "block" : "none";
+      if (this.checked) minaTech.checked = false;
+    });
+
+    document.getElementById("controlUnit").addEventListener("change", function () {
+      document.getElementById("controlOptions").style.display = this.checked ? "block" : "none";
+    });
+
+    const num1 = document.getElementById("numberInputField");
+    const num2 = document.getElementById("numberInput");
+
+    function handleGPrefix(el) {
+      let digits = (el.value || "").replace(/[^0-9]/g, "");
+      el.value = digits ? ("G-" + digits) : "";
+    }
+
+    num1.addEventListener("input", function () { handleGPrefix(this); });
+    num2.addEventListener("input", function () { handleGPrefix(this); });
+
+    num1.addEventListener("paste", function () { setTimeout(() => handleGPrefix(this), 0); });
+    num2.addEventListener("paste", function () { setTimeout(() => handleGPrefix(this), 0); });
+  });
+
+  function generateResult() {
+    const name = (document.getElementById("nameInputField").value || "").trim();
+    const number = (document.getElementById("numberInputField").value || "").trim();
+    const rank = document.getElementById("rankSelect").value;
+    const subRegion = document.getElementById("subRegion").value;
+    const subRegionTrainee = document.getElementById("subRegionTrainee").value;
+    const regionName = document.getElementById("regionNames").value;
+    const fleetChecked = document.getElementById("fleetToggle").checked;
+    const fleetVal = document.getElementById("fleetBox").value;
+    const minaTechChecked = document.getElementById("minaTech").checked;
+    const masaratChecked = document.getElementById("masarat").checked;
+    const masarVal = (document.getElementById("masarInput").value || "").trim();
+    const controlChecked = document.getElementById("controlUnit").checked;
+    const controlVal = document.getElementById("controlOptions").value;
+
+    if (!number) {
+      document.getElementById("resultOutput").innerText = "يرجى ملء الكود.";
+      return;
+    }
+
+    const parts = [];
+
+    if (!minaTechChecked && !masaratChecked) parts.push(name);
+    parts.push(number);
+
+    if (minaTechChecked) {
+      parts.push("فني ميناء");
+    } else if (masaratChecked && masarVal) {
+      parts.push("مسار " + masarVal);
+    } else {
+      if (isValidSelection(rank)) {
+        if (rank === "اشراف منطقه" && isValidSelection(subRegion)) {
+          parts.push(subRegion);
+        } else if (rank === "اشراف منطقه متدرب" && isValidSelection(subRegionTrainee)) {
+          parts.push(subRegionTrainee);
+        } else if (rank === "فني" && isValidSelection(regionName)) {
+          parts.push(regionName);
+        } else if (rank !== "فني") {
+          parts.push(rank);
+        }
+      }
+      if (fleetChecked && isValidSelection(fleetVal)) parts.push(fleetVal);
+      if (controlChecked && isValidSelection(controlVal)) parts.push(controlVal);
+    }
+
+    document.getElementById("resultOutput").innerText = parts.join(" | ");
+  }
+
+  function generateNickname() {
+    const name = (document.getElementById("nameInput").value || "").trim();
+    const number = (document.getElementById("numberInput").value || "").trim();
+    const role = document.getElementById("roleSelect").value;
+
+    if (!name || !number || !isValidSelection(role)) {
+      document.getElementById("output").innerText = "يرجى ملء جميع الحقول.";
+      return;
+    }
+
+    document.getElementById("output").innerText = [name, number, role].join(" | ");
+  }
+</script>
+
+</body>
+</html>
