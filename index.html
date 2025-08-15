@@ -1,42 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
-<body><style>
-  body {
-    background: url("https://xhhp1.github.io/mechanics/images/mechan.png") no-repeat center center fixed;
-    background-size: cover;
-  }
-</style>
-</body>
-<head>
-  <meta charset="UTF-8">
-  <title>Mechanics</title>
-  <style>
-    body {
-      background: url("https://raw.githubusercontent.com/xhhp1/mechanics/main/mechan.png") no-repeat center center fixed;
-      background-size: cover;
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
-  </style>
-</head>
-<body>
-  <!-- Your website content goes here -->
- <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>SRT — توجيهات</title>
+<title>SRT โ€” ุชูุฌููุงุช</title>
 <style>
+<body><style>
+  body {
+    background: url("https://raw.githubusercontent.com/xhhp1/mechanics/main/images/mechan.png") no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+  }
+</style>
+</body>
   body {
     font-family: Arial, sans-serif;
-    background: body {
-  background: url("https://raw.githubusercontent.com/xhhp1/mechanics/main/mechan.png") no-repeat center center fixed;
-  background-size: cover;
-}
- no-repeat center center fixed;
-    background-size: cover;
+    background-color: #111;
     color: #e0ca51;
     display: flex;
     flex-direction: column;
@@ -64,7 +43,7 @@
     background: #c6b142;
   }
   .container {
-    background-color: rgba(27, 27, 27, 0.85);
+    background-color: #1b1b1b;
     padding: 20px;
     border-radius: 10px;
     width: 400px;
@@ -119,150 +98,139 @@
   }
 </style>
 </head>
-<body><style>
-  body {
-    background: url("https://xhhp1.github.io/mechanics/images/mechan.png") no-repeat center center fixed;
-    background-size: cover;
-  }
-</style>
-</body>
 <body>
 <style>
   body {
-    background: url("https://xhhp1.github.io/mechanics/images/mechan.png") no-repeat center center fixed;
+    background: url("https://raw.githubusercontent.com/xhhp1/mechanics/main/images/mechan.png") no-repeat center center fixed;
     background-size: cover;
-  }
-</style>
-<style>
-  body {
-    background: url("https://raw.githubusercontent.com/xhhp1/mechanics/main/mechan.png") no-repeat center center fixed;
-    background-size: cover;
+    margin: 0;
   }
 </style>
 
 <div class="toggle-buttons">
-  <button id="fieldBtn" class="active">توجيهات الميدان</button>
-  <button id="jobBtn">توجيهات التوظيف</button>
+  <button id="fieldBtn" class="active">ุชูุฌููุงุช ุงูู…ูุฏุงู</button>
+  <button id="jobBtn">ุชูุฌููุงุช ุงูุชูุธูู</button>
 </div>
 
-<!-- توجيهات الميدان -->
+<!-- ุชูุฌููุงุช ุงูู…ูุฏุงู -->
 <div class="container active" id="fieldContainer">
-  <h1>🚒 توجيهات الميدان 🚒</h1>
-  <h2>⚙️اختصر اسمك الميداني⚙️</h2>
+  <h1>๐’ ุชูุฌููุงุช ุงูู…ูุฏุงู ๐’</h1>
+  <h2>โ๏ธุงุฎุชุตุฑ ุงุณู…ู ุงูู…ูุฏุงููโ๏ธ</h2>
 
-  <input type="text" id="nameInputField" placeholder="ادخل اسمك">
-  <input type="text" id="numberInputField" placeholder="كودك الميداني مثال (G-110)">
+  <input type="text" id="nameInputField" placeholder="ุงุฏุฎู ุงุณู…ู">
+  <input type="text" id="numberInputField" placeholder="ููุฏู ุงูู…ูุฏุงูู ู…ุซุงู (G-110)">
 
   <select id="rankSelect">
-    <option value="">اختر رتبتك</option>
-    <option value="فني">فني</option>
-    <option value="اشراف منطقه">اشراف منطقه</option>
-    <option value="اشراف منطقه متدرب">اشراف منطقه متدرب</option>
-    <option value="اشراف ميداني">اشراف ميداني</option>
-    <option value="اشراف عام">اشراف عام</option>
-    <option value="طوارئ وإنقاذ "> طوارئ وانقاذ </option>
+    <option value="">ุงุฎุชุฑ ุฑุชุจุชู</option>
+    <option value="ููู">ููู</option>
+    <option value="ุงุดุฑุงู ู…ูุทูู">ุงุดุฑุงู ู…ูุทูู</option>
+    <option value="ุงุดุฑุงู ู…ูุทูู ู…ุชุฏุฑุจ">ุงุดุฑุงู ู…ูุทูู ู…ุชุฏุฑุจ</option>
+    <option value="ุงุดุฑุงู ู…ูุฏุงูู">ุงุดุฑุงู ู…ูุฏุงูู</option>
+    <option value="ุงุดุฑุงู ุนุงู…">ุงุดุฑุงู ุนุงู…</option>
+    <!-- ุงูุฅุถุงูุฉ ุงููุญูุฏุฉ ุงูู…ุทููุจุฉ -->
+    <option value="ุทูุงุฑุฆ ูุฅููุงุฐ "> ุทูุงุฑุฆ ูุงููุงุฐ </option>
   </select>
 
   <select id="subRegion" style="display:none;">
-    <option value="">اختر توجيهك</option>
-    <option value="اشراف منطقة لوس">اشراف منطقة لوس</option>
-    <option value="اشراف منطقة ساندي">اشراف منطقة ساندي</option>
-    <option value="اشراف منطقة بوليتو">اشراف منطقة بوليتو</option>
-    <option value="اشراف منطقة بوليتو + ساندي">اشراف منطقة بوليتو + ساندي</option>
+    <option value="">ุงุฎุชุฑ ุชูุฌููู</option>
+    <option value="ุงุดุฑุงู ู…ูุทูุฉ ููุณ">ุงุดุฑุงู ู…ูุทูุฉ ููุณ</option>
+    <option value="ุงุดุฑุงู ู…ูุทูุฉ ุณุงูุฏู">ุงุดุฑุงู ู…ูุทูุฉ ุณุงูุฏู</option>
+    <option value="ุงุดุฑุงู ู…ูุทูุฉ ุจูููุชู">ุงุดุฑุงู ู…ูุทูุฉ ุจูููุชู</option>
+    <option value="ุงุดุฑุงู ู…ูุทูุฉ ุจูููุชู + ุณุงูุฏู">ุงุดุฑุงู ู…ูุทูุฉ ุจูููุชู + ุณุงูุฏู</option>
   </select>
 
   <select id="subRegionTrainee" style="display:none;">
-    <option value="">اختر توجيهك</option>
-    <option value="اشراف منطقة لوس متدرب">اشراف منطقة لوس متدرب</option>
-    <option value="اشراف منطقة ساندي متدرب">اشراف منطقة ساندي متدرب</option>
-    <option value="اشراف منطقة بوليتو متدرب">اشراف منطقة بوليتو متدرب</option>
-    <option value="اشراف منطقة بوليتو + ساندي متدرب">اشراف منطقة بوليتو + ساندي متدرب</option>
+    <option value="">ุงุฎุชุฑ ุชูุฌููู</option>
+    <option value="ุงุดุฑุงู ู…ูุทูุฉ ููุณ ู…ุชุฏุฑุจ">ุงุดุฑุงู ู…ูุทูุฉ ููุณ ู…ุชุฏุฑุจ</option>
+    <option value="ุงุดุฑุงู ู…ูุทูุฉ ุณุงูุฏู ู…ุชุฏุฑุจ">ุงุดุฑุงู ู…ูุทูุฉ ุณุงูุฏู ู…ุชุฏุฑุจ</option>
+    <option value="ุงุดุฑุงู ู…ูุทูุฉ ุจูููุชู ู…ุชุฏุฑุจ">ุงุดุฑุงู ู…ูุทูุฉ ุจูููุชู ู…ุชุฏุฑุจ</option>
+    <option value="ุงุดุฑุงู ู…ูุทูุฉ ุจูููุชู + ุณุงูุฏู ู…ุชุฏุฑุจ">ุงุดุฑุงู ู…ูุทูุฉ ุจูููุชู + ุณุงูุฏู ู…ุชุฏุฑุจ</option>
   </select>
 
   <select id="regionNames" style="display:none;">
-    <option value="">اختر اسم توجيهك</option>
-    <option value="لوس">لوس</option>
-    <option value="ساندي">ساندي</option>
-    <option value="بوليتو">بوليتو</option>
-    <option value="جزيرة">جزيرة</option>
-    <option value="الموجه الميداني">الموجه الميداني</option>
-    <option value="نائب الموجه الميداني">نائب الموجه الميداني</option>
-    <option value="مركز الاتصالات">مركز الاتصالات</option>
+    <option value="">ุงุฎุชุฑ ุงุณู… ุชูุฌููู</option>
+    <option value="ููุณ">ููุณ</option>
+    <option value="ุณุงูุฏู">ุณุงูุฏู</option>
+    <option value="ุจูููุชู">ุจูููุชู</option>
+    <option value="ุฌุฒูุฑุฉ">ุฌุฒูุฑุฉ</option>
+    <option value="ุงูู…ูุฌู ุงูู…ูุฏุงูู">ุงูู…ูุฌู ุงูู…ูุฏุงูู</option>
+    <option value="ูุงุฆุจ ุงูู…ูุฌู ุงูู…ูุฏุงูู">ูุงุฆุจ ุงูู…ูุฌู ุงูู…ูุฏุงูู</option>
+    <option value="ู…ุฑูุฒ ุงูุงุชุตุงูุงุช">ู…ุฑูุฒ ุงูุงุชุตุงูุงุช</option>
   </select>
 
-  <label><input type="checkbox" id="fleetToggle"> هل تريد إضافة خدمة الأسطول؟</label>
+  <label><input type="checkbox" id="fleetToggle"> ูู ุชุฑูุฏ ุฅุถุงูุฉ ุฎุฏู…ุฉ ุงูุฃุณุทููุ</label>
   <select id="fleetBox" style="display:none;">
-    <option value="">اختر خدمة الاسطول</option>
-    <option value="اسطول لوس">اسطول لوس</option>
-    <option value="اسطول ساندي">اسطول ساندي</option>
-    <option value="اسطول بوليتو">اسطول بوليتو</option>
-    <option value="اسطول جزيرة">اسطول جزيرة</option>
-    <option value="اسطول متوسط لوس">اسطول متوسط لوس</option>
-    <option value="اسطول متوسط ساندي">اسطول متوسط ساندي</option>
-    <option value="اسطول متوسط بوليتو">اسطول متوسط بوليتو</option>
-    <option value="اسطول متوسط جزيرة">اسطول متوسط جزيرة</option>
+    <option value="">ุงุฎุชุฑ ุฎุฏู…ุฉ ุงูุงุณุทูู</option>
+    <option value="ุงุณุทูู ููุณ">ุงุณุทูู ููุณ</option>
+    <option value="ุงุณุทูู ุณุงูุฏู">ุงุณุทูู ุณุงูุฏู</option>
+    <option value="ุงุณุทูู ุจูููุชู">ุงุณุทูู ุจูููุชู</option>
+    <option value="ุงุณุทูู ุฌุฒูุฑุฉ">ุงุณุทูู ุฌุฒูุฑุฉ</option>
+    <option value="ุงุณุทูู ู…ุชูุณุท ููุณ">ุงุณุทูู ู…ุชูุณุท ููุณ</option>
+    <option value="ุงุณุทูู ู…ุชูุณุท ุณุงูุฏู">ุงุณุทูู ู…ุชูุณุท ุณุงูุฏู</option>
+    <option value="ุงุณุทูู ู…ุชูุณุท ุจูููุชู">ุงุณุทูู ู…ุชูุณุท ุจูููุชู</option>
+    <option value="ุงุณุทูู ู…ุชูุณุท ุฌุฒูุฑุฉ">ุงุณุทูู ู…ุชูุณุท ุฌุฒูุฑุฉ</option>
   </select>
 
-  <label><input type="checkbox" id="minaTech"> فني ميناء</label>
-  <label><input type="checkbox" id="masarat"> مسارات التعديل و التزويد</label>
-  <input type="text" id="masarInput" placeholder="اكتب رقم المسار فقط مثال (4)" style="display:none;">
-  <label><input type="checkbox" id="controlUnit"> وحدة تحكم</label>
+  <label><input type="checkbox" id="minaTech"> ููู ู…ููุงุก</label>
+  <label><input type="checkbox" id="masarat"> ู…ุณุงุฑุงุช ุงูุชุนุฏูู ู ุงูุชุฒููุฏ</label>
+  <input type="text" id="masarInput" placeholder="ุงูุชุจ ุฑูู… ุงูู…ุณุงุฑ ููุท ู…ุซุงู (4)" style="display:none;">
+  <label><input type="checkbox" id="controlUnit"> ูุญุฏุฉ ุชุญูู…</label>
   <select id="controlOptions" style="display:none;">
-    <option value="">اختر نوع وحدة التحكم</option>
-    <option value="فني مركز تحكم">فني مركز تحكم</option>
-    <option value="فني خدمات طرق">فني خدمات طرق</option>
+    <option value="">ุงุฎุชุฑ ููุน ูุญุฏุฉ ุงูุชุญูู…</option>
+    <option value="ููู ู…ุฑูุฒ ุชุญูู…">ููู ู…ุฑูุฒ ุชุญูู…</option>
+    <option value="ููู ุฎุฏู…ุงุช ุทุฑู">ููู ุฎุฏู…ุงุช ุทุฑู</option>
   </select>
 
-  <button class="generate" onclick="generateResult()">🗞 اضغط هنا لأظهار اسمك 🗞</button>
+  <button class="generate" onclick="generateResult()">๐— ุงุถุบุท ููุง ูุฃุธูุงุฑ ุงุณู…ู ๐—</button>
   <div class="output" id="resultOutput"></div>
-  <button class="copy-btn" onclick="copyText('resultOutput')">🔗 اضغط هنا للنسخ 🔗</button>
+  <button class="copy-btn" onclick="copyText('resultOutput')">๐”— ุงุถุบุท ููุง ูููุณุฎ ๐”—</button>
 </div>
 
-<!-- توجيهات التوظيف -->
+<!-- ุชูุฌููุงุช ุงูุชูุธูู -->
 <div class="container" id="jobContainer">
-  <h1>📜 توجيهات التوظيف📜 </h1>
-  <h2>📌اختصر توجيهك في التوظيف 📌</h2>
+  <h1>๐“ ุชูุฌููุงุช ุงูุชูุธูู๐“ </h1>
+  <h2>๐“ุงุฎุชุตุฑ ุชูุฌููู ูู ุงูุชูุธูู ๐“</h2>
 
-  <input type="text" id="nameInput" placeholder="ادخل اسمك">
-  <input type="text" id="numberInput" placeholder="كودك الميداني مثال (G-110)">
+  <input type="text" id="nameInput" placeholder="ุงุฏุฎู ุงุณู…ู">
+  <input type="text" id="numberInput" placeholder="ููุฏู ุงูู…ูุฏุงูู ู…ุซุงู (G-110)">
 
-  <label style="display:block; text-align:right; margin-top:6px">اختار توجيهك حسب التقرير:</label>
+  <label style="display:block; text-align:right; margin-top:6px">ุงุฎุชุงุฑ ุชูุฌููู ุญุณุจ ุงูุชูุฑูุฑ:</label>
   <select id="roleSelect">
-    <option value="">اختر توجيهك</option>
-    <option>نائب مدير قسم شؤون التوظيف</option>
-    <option>اشراف التوظيف</option>
-    <option>مسؤول المقابلة 1</option>
-    <option>مسؤول المقابلة 2</option>
-    <option>مسؤول المقابلة 3</option>
-    <option>مسؤول المقابلة 4</option>
-    <option>مسؤول المقابلة 5</option>
-    <option>نائب مسؤول مقابله 1</option>
-    <option>نائب مسؤول مقابله 2</option>
-    <option>نائب مسؤول مقابله 3</option>
-    <option>نائب مسؤول مقابله 4</option>
-    <option>نائب مسؤول مقابله 5</option>
-    <option>مسؤول تنظيم 1</option>
-    <option>مسؤول تنظيم 2</option>
-    <option>مسؤول تنظيم 3</option>
-    <option>مسؤول تنظيم 4</option>
-    <option>تنظيم 1</option>
-    <option>تنظيم 2</option>
-    <option>تنظيم 3</option>
-    <option>تنظيم 4</option>
-    <option>باص 1</option>
-    <option>باص 2</option>
-    <option>باص 3</option>
-    <option>باص 4</option>
+    <option value="">ุงุฎุชุฑ ุชูุฌููู</option>
+    <option>ูุงุฆุจ ู…ุฏูุฑ ูุณู… ุดุคูู ุงูุชูุธูู</option>
+    <option>ุงุดุฑุงู ุงูุชูุธูู</option>
+    <option>ู…ุณุคูู ุงูู…ูุงุจูุฉ 1</option>
+    <option>ู…ุณุคูู ุงูู…ูุงุจูุฉ 2</option>
+    <option>ู…ุณุคูู ุงูู…ูุงุจูุฉ 3</option>
+    <option>ู…ุณุคูู ุงูู…ูุงุจูุฉ 4</option>
+    <option>ู…ุณุคูู ุงูู…ูุงุจูุฉ 5</option>
+    <option>ูุงุฆุจ ู…ุณุคูู ู…ูุงุจูู 1</option>
+    <option>ูุงุฆุจ ู…ุณุคูู ู…ูุงุจูู 2</option>
+    <option>ูุงุฆุจ ู…ุณุคูู ู…ูุงุจูู 3</option>
+    <option>ูุงุฆุจ ู…ุณุคูู ู…ูุงุจูู 4</option>
+    <option>ูุงุฆุจ ู…ุณุคูู ู…ูุงุจูู 5</option>
+    <option>ู…ุณุคูู ุชูุธูู… 1</option>
+    <option>ู…ุณุคูู ุชูุธูู… 2</option>
+    <option>ู…ุณุคูู ุชูุธูู… 3</option>
+    <option>ู…ุณุคูู ุชูุธูู… 4</option>
+    <option>ุชูุธูู… 1</option>
+    <option>ุชูุธูู… 2</option>
+    <option>ุชูุธูู… 3</option>
+    <option>ุชูุธูู… 4</option>
+    <option>ุจุงุต 1</option>
+    <option>ุจุงุต 2</option>
+    <option>ุจุงุต 3</option>
+    <option>ุจุงุต 4</option>
   </select>
 
-  <button class="generate" onclick="generateNickname()">🗞 اضغط هنا لأظهار اسمك 🗞</button>
+  <button class="generate" onclick="generateNickname()">๐— ุงุถุบุท ููุง ูุฃุธูุงุฑ ุงุณู…ู ๐—</button>
   <div class="output" id="output"></div>
-  <button class="copy-btn" onclick="copyText('output')">🔗 اضغط هنا للنسخ 🔗</button>
+  <button class="copy-btn" onclick="copyText('output')">๐”— ุงุถุบุท ููุง ูููุณุฎ ๐”—</button>
 </div>
 
 <script>
   function isValidSelection(val) {
-    return val && String(val).trim() !== "" && !String(val).trim().startsWith("اختر");
+    return val && String(val).trim() !== "" && !String(val).trim().startsWith("ุงุฎุชุฑ");
   }
 
   function copyText(id) {
@@ -272,6 +240,7 @@
     }
   }
 
+  // Toggle buttons
   document.getElementById("fieldBtn").addEventListener("click", function(){
     document.getElementById("fieldContainer").classList.add("active");
     document.getElementById("jobContainer").classList.remove("active");
@@ -289,14 +258,15 @@
     const rankSelect = document.getElementById("rankSelect");
 
     rankSelect.addEventListener("change", function () {
+      // ุฅุธูุงุฑ/ุฅุฎูุงุก ุงูููุงุฆู… ุจูุงุกู ุนูู ุงูุฑุชุจุฉ ุงูู…ุฎุชุงุฑุฉ
       document.getElementById("subRegion").style.display =
-        (this.value === "اشراف منطقه") ? "block" : "none";
+        (this.value === "ุงุดุฑุงู ู…ูุทูู") ? "block" : "none";
 
       document.getElementById("subRegionTrainee").style.display =
-        (this.value === "اشراف منطقه متدرب") ? "block" : "none";
+        (this.value === "ุงุดุฑุงู ู…ูุทูู ู…ุชุฏุฑุจ") ? "block" : "none";
 
       document.getElementById("regionNames").style.display =
-        (this.value === "فني") ? "block" : "none";
+        (this.value === "ููู") ? "block" : "none";
     });
 
     document.getElementById("fleetToggle").addEventListener("change", function () {
@@ -353,7 +323,7 @@
     const controlVal = document.getElementById("controlOptions").value;
 
     if (!number) {
-      document.getElementById("resultOutput").innerText = "يرجى ملء الكود.";
+      document.getElementById("resultOutput").innerText = "ูุฑุฌู ู…ูุก ุงูููุฏ.";
       return;
     }
 
@@ -363,18 +333,18 @@
     parts.push(number);
 
     if (minaTechChecked) {
-      parts.push("فني ميناء");
+      parts.push("ููู ู…ููุงุก");
     } else if (masaratChecked && masarVal) {
-      parts.push("مسار " + masarVal);
+      parts.push("ู…ุณุงุฑ " + masarVal);
     } else {
       if (isValidSelection(rank)) {
-        if (rank === "اشراف منطقه" && isValidSelection(subRegion)) {
+        if (rank === "ุงุดุฑุงู ู…ูุทูู" && isValidSelection(subRegion)) {
           parts.push(subRegion);
-        } else if (rank === "اشراف منطقه متدرب" && isValidSelection(subRegionTrainee)) {
+        } else if (rank === "ุงุดุฑุงู ู…ูุทูู ู…ุชุฏุฑุจ" && isValidSelection(subRegionTrainee)) {
           parts.push(subRegionTrainee);
-        } else if (rank === "فني" && isValidSelection(regionName)) {
+        } else if (rank === "ููู" && isValidSelection(regionName)) {
           parts.push(regionName);
-        } else if (rank !== "فني") {
+        } else if (rank !== "ููู") {
           parts.push(rank);
         }
       }
@@ -391,26 +361,13 @@
     const role = document.getElementById("roleSelect").value;
 
     if (!name || !number || !isValidSelection(role)) {
-      document.getElementById("output").innerText = "يرجى ملء جميع الحقول.";
+      document.getElementById("output").innerText = "ูุฑุฌู ู…ูุก ุฌู…ูุน ุงูุญููู.";
       return;
     }
 
     document.getElementById("output").innerText = [name, number, role].join(" | ");
   }
 </script>
-<style>
-  body {
-    background: url("https://xhhp1.github.io/randoms/images/mechan.png") no-repeat center center fixed;
-    background-size: cover;
-  }
-</style>
 
 </body>
 </html>
-
-</body>
-</html>
-
-
-
-
