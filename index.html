@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>🖋مختصر المسميات الميدانية🖋</title>
+<title>🖋 مختصر المسميات الميدانية 🖋</title>
 <style>
     body {
       background: url("https://raw.githubusercontent.com/xhhp1/mechanics/main/images/mechan.png") no-repeat center center fixed;
@@ -39,9 +39,8 @@
       display: inline-block;
       font-size: 18px;
     }
-  </style>
+</style>
 <style>
-/* CSS same as before — all inline so GitHub Pages won’t strip it */
 body {
   font-family: Arial, sans-serif;
   background-color: #111;
@@ -129,15 +128,16 @@ label { display: block; font-size: 14px; margin: 6px 0; }
 <body>
 
 <div class="toggle-buttons">
-  <button type="button" id="fieldBtn" class="active">توجيهات الميدان</button>
-  <button type="button" id="jobBtn">توجيهات التوظيف</button>
+  <button id="fieldBtn" class="active">توجيهات الميدان</button>
+  <button id="jobBtn">توجيهات التوظيف</button>
 </div>
 
+<!-- توجيهات الميدان -->
 <div class="container active" id="fieldContainer">
   <h1>🛠 توجيهات الميدان 🛠</h1>
-  <h2>⚙️ اختصر اسمك الميداني ⚙️</h2>
+  <h2>⚙️اختصر اسمك الميداني⚙️</h2>
 
-  <input type="text" id="nameInputField" placeholder="ادخل اسمك">
+  <input type="text" id="nameInputField" placeholder="ادخل اسمك مثال (حمد بن عسكر)">
   <input type="text" id="numberInputField" placeholder="كودك الميداني مثال (G-110)">
 
   <select id="rankSelect">
@@ -147,7 +147,7 @@ label { display: block; font-size: 14px; margin: 6px 0; }
     <option value="اشراف منطقه متدرب">اشراف منطقه متدرب</option>
     <option value="اشراف ميداني">اشراف ميداني</option>
     <option value="اشراف عام">اشراف عام</option>
-    <option value="طوارئ وإنقاذ">طوارئ وإنقاذ</option>
+    <option value="طوارئ وإنقاذ "> طوارئ وانقاذ </option>
   </select>
 
   <select id="subRegion" style="display:none;">
@@ -189,7 +189,6 @@ label { display: block; font-size: 14px; margin: 6px 0; }
     <option value="اسطول متوسط بوليتو">اسطول متوسط بوليتو</option>
     <option value="اسطول متوسط جزيرة">اسطول متوسط جزيرة</option>
   </select>
-
   <label><input type="checkbox" id="minaTech"> فني ميناء</label>
   <label><input type="checkbox" id="masarat"> مسارات التعديل و التزويد</label>
   <input type="text" id="masarInput" placeholder="اكتب رقم المسار فقط مثال (4)" style="display:none;">
@@ -200,16 +199,26 @@ label { display: block; font-size: 14px; margin: 6px 0; }
     <option value="فني خدمات طرق">فني خدمات طرق</option>
   </select>
 
-  <button type="button" class="generate" onclick="generateResult()">🗞 اضغط هنا لأظهار اسمك 🗞</button>
+  <!-- كود المعتمد -->
+  <label><input type="checkbox" id="koodToggle"> كود المعتمد </label>
+  <select id="koodOptions" style="display:none;">
+    <option value="">اختر كود المعتمد</option>
+    <option value="CD">CD</option>
+    <option value="CC">CC</option>
+    <option value="CB">CB</option>
+  </select>
+
+  <button class="generate" onclick="generateResult()">🗞 اضغط هنا لأظهار اسمك 🗞</button>
   <div class="output" id="resultOutput"></div>
-  <button type="button" class="copy-btn" onclick="copyText('resultOutput')">🔗 اضغط هنا للنسخ 🔗</button>
+  <button class="copy-btn" onclick="copyText('resultOutput')">🔗 اضغط هنا للنسخ 🔗</button>
 </div>
 
+<!-- توجيهات التوظيف -->
 <div class="container" id="jobContainer">
-  <h1>📜 توجيهات التوظيف 📜</h1>
-  <h2>📌 اختصر توجيهك في التوظيف 📌</h2>
+  <h1>📜 توجيهات التوظيف📜 </h1>
+  <h2>📌اختصر توجيهك في التوظيف 📌</h2>
 
-  <input type="text" id="nameInput" placeholder="ادخل اسمك">
+  <input type="text" id="nameInput" placeholder="ادخل اسمك مثال (حمد بن عسكر)">
   <input type="text" id="numberInput" placeholder="كودك الميداني مثال (G-110)">
 
   <label style="display:block; text-align:right; margin-top:6px">اختار توجيهك حسب التقرير:</label>
@@ -241,70 +250,159 @@ label { display: block; font-size: 14px; margin: 6px 0; }
     <option>باص 4</option>
   </select>
 
-  <button type="button" class="generate" onclick="generateNickname()">🗞 اضغط هنا لأظهار اسمك 🗞</button>
+  <button class="generate" onclick="generateNickname()">🗞 اضغط هنا لأظهار اسمك 🗞</button>
   <div class="output" id="output"></div>
-  <button type="button" class="copy-btn" onclick="copyText('output')">🔗 اضغط هنا للنسخ 🔗</button>
+  <button class="copy-btn" onclick="copyText('output')">🔗 اضغط هنا للنسخ 🔗</button>
 </div>
 
 <script>
+/* Helper utilities */
 function isValidSelection(val) {
   return val && String(val).trim() !== "" && !String(val).trim().startsWith("اختر");
 }
+
 function copyText(id) {
-  const text = document.getElementById(id).innerText;
-  if (text.trim()) navigator.clipboard.writeText(text);
+  const el = document.getElementById(id);
+  if (!el) return;
+  const text = el.innerText || el.textContent || "";
+  if (!text.trim()) return;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).catch(()=>{});
+  } else {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch(e){}
+    ta.remove();
+  }
 }
-document.getElementById("fieldBtn").onclick = function() {
+
+/* Bracket helpers */
+function parseBracketed(str){
+  if (!str) return null;
+  const m = /^\s*\[\s*([^\|\]\s]+)\s*\|\s*([^\]]*?)\s*\]\s*$/.exec(str);
+  if (!m) return null;
+  return { code: m[1], part: m[2] };
+}
+function makeBracketed(code, part){
+  return `[ ${code} | ${part} ]`;
+}
+function formatNumberPart(s){
+  const digits = String(s || "").replace(/[^0-9]/g, "");
+  return digits ? ("G-" + digits) : "";
+}
+
+/* Tabs */
+document.getElementById("fieldBtn").onclick = function(){
   document.getElementById("fieldContainer").classList.add("active");
   document.getElementById("jobContainer").classList.remove("active");
   this.classList.add("active");
   document.getElementById("jobBtn").classList.remove("active");
 };
-document.getElementById("jobBtn").onclick = function() {
+document.getElementById("jobBtn").onclick = function(){
   document.getElementById("jobContainer").classList.add("active");
   document.getElementById("fieldContainer").classList.remove("active");
   this.classList.add("active");
   document.getElementById("fieldBtn").classList.remove("active");
 };
+
+/* Setup */
 document.addEventListener("DOMContentLoaded", function () {
   const rankSelect = document.getElementById("rankSelect");
-  rankSelect.onchange = function () {
-    document.getElementById("subRegion").style.display =
-      (this.value === "اشراف منطقه") ? "block" : "none";
-    document.getElementById("subRegionTrainee").style.display =
-      (this.value === "اشراف منطقه متدرب") ? "block" : "none";
-    document.getElementById("regionNames").style.display =
-      (this.value === "فني") ? "block" : "none";
-  };
-  document.getElementById("fleetToggle").onchange = function () {
-    document.getElementById("fleetBox").style.display = this.checked ? "block" : "none";
-  };
+  const fleetToggle = document.getElementById("fleetToggle");
+  const fleetBox = document.getElementById("fleetBox");
   const minaTech = document.getElementById("minaTech");
   const masarat = document.getElementById("masarat");
-  minaTech.onchange = function () {
-    if (this.checked) {
-      masarat.checked = false;
-      document.getElementById("masarInput").style.display = "none";
-    }
-  };
-  masarat.onchange = function () {
-    document.getElementById("masarInput").style.display = this.checked ? "block" : "none";
-    if (this.checked) minaTech.checked = false;
-  };
-  document.getElementById("controlUnit").onchange = function () {
-    document.getElementById("controlOptions").style.display = this.checked ? "block" : "none";
-  };
-  const num1 = document.getElementById("numberInputField");
-  const num2 = document.getElementById("numberInput");
-  function handleGPrefix(el) {
-    let digits = (el.value || "").replace(/[^0-9]/g, "");
-    el.value = digits ? ("G-" + digits) : "";
+  const masarInput = document.getElementById("masarInput");
+  const controlUnit = document.getElementById("controlUnit");
+  const controlOptions = document.getElementById("controlOptions");
+  const koodToggle = document.getElementById("koodToggle");
+  const koodOptions = document.getElementById("koodOptions");
+  const numberField = document.getElementById("numberInputField");
+  const numberFieldJob = document.getElementById("numberInput");
+
+  /* Rank logic */
+  if (rankSelect) {
+    rankSelect.onchange = function () {
+      const v = this.value;
+      document.getElementById("subRegion").style.display = (v === "اشراف منطقه") ? "block" : "none";
+      document.getElementById("subRegionTrainee").style.display = (v === "اشراف منطقه متدرب") ? "block" : "none";
+      document.getElementById("regionNames").style.display = (v === "فني") ? "block" : "none";
+    };
   }
-  num1.oninput = function () { handleGPrefix(this); };
-  num2.oninput = function () { handleGPrefix(this); };
-  num1.onpaste = function () { setTimeout(() => handleGPrefix(this), 0); };
-  num2.onpaste = function () { setTimeout(() => handleGPrefix(this), 0); };
+
+  /* Fleet toggle */
+  if (fleetToggle && fleetBox) {
+    fleetToggle.onchange = function () {
+      fleetBox.style.display = this.checked ? "block" : "none";
+    };
+    fleetBox.style.display = fleetToggle.checked ? "block" : "none";
+  }
+
+  /* MinaTech & Masarat mutual exclusion ONLY between themselves (not affecting kood) */
+  if (minaTech) {
+    minaTech.onchange = function () {
+      if (this.checked && masarat) {
+        masarat.checked = false;
+        if (masarInput) masarInput.style.display = "none";
+      }
+    };
+  }
+  if (masarat) {
+    masarat.onchange = function () {
+      if (masarInput) masarInput.style.display = this.checked ? "block" : "none";
+      if (this.checked && minaTech) minaTech.checked = false;
+    };
+    if (masarInput) masarInput.style.display = masarat.checked ? "block" : "none";
+  }
+
+  /* Control unit toggle */
+  if (controlUnit && controlOptions) {
+    controlUnit.onchange = function () {
+      controlOptions.style.display = this.checked ? "block" : "none";
+    };
+    controlOptions.style.display = controlUnit.checked ? "block" : "none";
+  }
+
+  /* Kood independent toggle */
+  if (koodToggle && koodOptions && numberField) {
+    koodToggle.onchange = function () {
+      koodOptions.style.display = this.checked ? "block" : "none";
+      // Notice: we NO LONGER clear number field when unchecking
+    };
+    koodOptions.onchange = function () {
+      const val = this.value;
+      if (!val) return;
+      const parsedNow = parseBracketed(numberField.value);
+      const rawPart = parsedNow ? parsedNow.part : numberField.value;
+      const formattedPart = formatNumberPart(rawPart) || "G-";
+      numberField.value = makeBracketed(val, formattedPart);
+    };
+    koodOptions.style.display = koodToggle.checked ? "block" : "none";
+  }
+
+  /* Format number fields */
+  function handleNumberFieldInput(el) {
+    const parsed = parseBracketed(el.value);
+    if (parsed) {
+      const afterPipe = el.value.replace(/^\s*\[\s*[^\|\]\s]+\s*\|\s*/,'').replace(/\s*\]\s*$/,'');
+      el.value = makeBracketed(parsed.code, formatNumberPart(afterPipe));
+    } else {
+      el.value = formatNumberPart(el.value);
+    }
+  }
+  if (numberField) {
+    numberField.oninput = function () { handleNumberFieldInput(this); };
+    numberField.onpaste = function () { setTimeout(()=>handleNumberFieldInput(this), 0); };
+  }
+  if (numberFieldJob) {
+    numberFieldJob.oninput = function () { this.value = formatNumberPart(this.value); };
+    numberFieldJob.onpaste = function () { setTimeout(()=> { numberFieldJob.value = formatNumberPart(numberFieldJob.value); }, 0); };
+  }
 });
+
+/* generateResult */
 function generateResult() {
   const name = (document.getElementById("nameInputField").value || "").trim();
   const number = (document.getElementById("numberInputField").value || "").trim();
@@ -319,13 +417,18 @@ function generateResult() {
   const masarVal = (document.getElementById("masarInput").value || "").trim();
   const controlChecked = document.getElementById("controlUnit").checked;
   const controlVal = document.getElementById("controlOptions").value;
+  const koodChecked = document.getElementById("koodToggle").checked;
+  const koodVal = document.getElementById("koodOptions").value;
+
   if (!name || !number) {
     document.getElementById("resultOutput").innerText = "يرجى ملء الاسم والكود.";
     return;
   }
+
   const parts = [];
   if (!minaTechChecked && !masaratChecked) parts.push(name);
   parts.push(number);
+
   if (minaTechChecked) {
     parts.push("فني ميناء");
   } else if (masaratChecked && masarVal) {
@@ -345,25 +448,30 @@ function generateResult() {
     if (fleetChecked && isValidSelection(fleetVal)) parts.push(fleetVal);
     if (controlChecked && isValidSelection(controlVal)) parts.push(controlVal);
   }
+
+  // Kood is now completely independent — user can select it with anything else
+  if (koodChecked && isValidSelection(koodVal)) {
+    const parsedNumber = parseBracketed(number);
+    if (!(parsedNumber && parsedNumber.code === koodVal)) {
+      parts.push("كود " + koodVal);
+    }
+  }
+
   document.getElementById("resultOutput").innerText = parts.join(" | ");
 }
+
+/* generateNickname */
 function generateNickname() {
   const name = (document.getElementById("nameInput").value || "").trim();
   const number = (document.getElementById("numberInput").value || "").trim();
   const role = document.getElementById("roleSelect").value;
+
   if (!name || !number || !isValidSelection(role)) {
     document.getElementById("output").innerText = "يرجى ملء جميع الحقول.";
     return;
   }
+
   document.getElementById("output").innerText = [name, number, role].join(" | ");
 }
 </script>
-</body>
-</html>
-
-
-
-
-
-
 
