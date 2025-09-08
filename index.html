@@ -66,6 +66,20 @@ body {
   cursor: pointer;
   transition: 0.3s;
 }
+.toggle-buttons .report-btn {
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  background: #e0ca51;
+  color: #111;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
+  transition: 0.3s;
+}
+.toggle-buttons .report-btn:hover {
+  background: #c6b142;
+}
 .toggle-buttons button.active {
   background: #c6b142;
 }
@@ -130,6 +144,7 @@ label { display: block; font-size: 14px; margin: 6px 0; }
 <div class="toggle-buttons">
   <button id="fieldBtn" class="active">توجيهات الميدان</button>
   <button id="jobBtn">توجيهات التوظيف</button>
+  <a href="https://xhhp1.github.io/anything/" target="_blank" class="report-btn">تقارير العمليات</a>
 </div>
 
 <!-- توجيهات الميدان -->
@@ -474,4 +489,3 @@ function generateNickname() {
   document.getElementById("output").innerText = [name, number, role].join(" | ");
 }
 </script>
-
