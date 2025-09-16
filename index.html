@@ -1,154 +1,231 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+  <meta charset="UTF-8">
+  <title>تقرير كراج الميكانيكي</title>
+  <style>
+    body {
+      font-family: Tahoma, Arial, sans-serif;
+      background: #e6c200;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #e6c200;
+    }
+
+    .section-block {
+      margin-bottom: 15px;
+      padding: 10px;
+      background: #1b1b1b;
+      border: 1px solid #1b1b1b;
+      border-radius: 6px;
+    }
+
+    .group-title {
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .units-list {
+      margin-bottom: 6px;
+    }
+
+    /* === Yellow buttons === */
+    button {
+      background-color: #FFD700;   /* Gold/Yellow */
+      color: #1b1b1b;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+    button:hover {
+      background-color: #e6c200;
+    }
+
+    .add-unit-btn {
+      margin-top: 6px;
+    }
+
+    .remove-btn {
+      background-color: #FFD700;
+      color: ##1b1b1b;
+      border: none;
+      padding: 2px 8px;
+      border-radius: 50%;
+      margin-right: 5px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .remove-btn:hover {
+      background-color: #e6c200;
+    }
+
+    .unit-row {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .unit-prefix, .unit-code {
+      padding: 4px;
+    }
+
+    .report-output {
+      background: #1b1b1b;
+      color: #e6c200;
+      padding: 10px;
+      border-radius: 6px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>🛠 مسميات وتقارير العمليات 🛠</title>
 <style>
-    body {
-      background: url("https://raw.githubusercontent.com/xhhp1/mechanics/main/images/mechan.png") no-repeat center center fixed;
-      background-size: cover;
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: white;
-      text-align: center;
-    }
-    h2 {
-      margin-top: 20px;
-    }
-    input, select, button {
-      margin: 10px;
-      padding: 8px;
-      border-radius: 5px;
-      border: none;
-      font-size: 16px;
-    }
-    .generate {
-      background: #28a745;
-      color: white;
-      cursor: pointer;
-    }
-    .generate:hover {
-      background: #218838;
-    }
-    #resultOutput {
-      margin-top: 20px;
-      padding: 10px;
-      background: rgba(0,0,0,0.5);
-      border-radius: 10px;
-      display: inline-block;
-      font-size: 18px;
-    }
-</style>
-<style>
-body {
-  font-family: Arial, sans-serif;
-  background-color: #111;
-  color: #e0ca51;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-}
-.toggle-buttons {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 20px;
-}
-.toggle-buttons button {
-  padding: 12px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  background: #e0ca51;
-  color: #111;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.toggle-buttons .report-btn {
-  padding: 12px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  background: #e0ca51;
-  color: #111;
-  border-radius: 8px;
-  text-decoration: none;
-  display: inline-block;
-  transition: 0.3s;
-}
-.toggle-buttons .report-btn:hover {
-  background: #c6b142;
-}
-.toggle-buttons button.active {
-  background: #c6b142;
-}
-.container {
-  background-color: #1b1b1b;
-  padding: 20px;
-  border-radius: 10px;
-  width: 400px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
-  display: none;
-}
-.container.active {
-  display: block;
-}
-h1 { text-align: center; margin: 0 0 8px; }
-h2 { text-align: center; font-size: 0.95rem; margin: 0 0 12px; }
-input, select, button {
-  width: 100%;
-  padding: 8px 10px;
-  margin: 6px 0;
-  border-radius: 6px;
-  border: none;
-  box-sizing: border-box;
-}
-input, select {
-  background: #2b2b2b;
-  color: #e0ca51;
-  font-size: 14px;
-}
-button.generate, .copy-btn {
-  background: #e0ca51;
-  color: #111;
-  font-weight: 700;
-  cursor: pointer;
-}
-button.generate:hover, .copy-btn:hover {
-  background: #c6b142;
-}
-label { display: block; font-size: 14px; margin: 6px 0; }
-.output {
-  background: #333;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 6px;
-  min-height: 22px;
-  color: #e0ca51;
-  font-weight: 600;
-  word-break: break-word;
-}
-.copy-btn {
-  margin-top: 8px;
-  padding: 8px;
-  border-radius: 6px;
-}
-@media (max-width: 880px) {
-  .container { width: 100%; max-width: 520px; }
-}
-</style>
-</head>
-<body>
+  body {
+    background: url("https://raw.githubusercontent.com/xhhp1/mechanics/main/images/mechan.png") no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+  }
+  h2 {
+    margin-top: 20px;
+  }
+  input, select, button {
+    margin: 10px;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+  }
 
+  /* Toggle Buttons */
+  .toggle-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    justify-content: center;
+  }
+  .toggle-buttons button {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background: #e0ca51;
+    color: #111;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .toggle-buttons .report-btn {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background: #e0ca51;
+    color: #111;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s;
+  }
+  .toggle-buttons .report-btn:hover {
+    background: #c6b142;
+  }
+  .toggle-buttons button.active {
+    background: #c6b142;
+  }
+
+  /* Containers */
+  .container {
+    background-color: #1b1b1b;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    display: none;
+    margin: 0 auto;
+  }
+  .container.active {
+    display: block;
+  }
+
+  h1 { text-align: center; margin: 0 0 8px; }
+  h2 { text-align: center; font-size: 0.95rem; margin: 0 0 12px; }
+  input, select {
+    width: 100%;
+    padding: 8px 10px;
+    margin: 6px 0;
+    border-radius: 6px;
+    border: none;
+    box-sizing: border-box;
+    background: #2b2b2b;
+    color: #e0ca51;
+    font-size: 14px;
+  }
+  label { display: block; font-size: 14px; margin: 6px 0; }
+
+  /* Center Buttons */
+  .button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+  }
+  .generate, .copy-btn {
+    display: inline-block;
+    width: auto;
+    padding: 12px 24px;
+    border-radius: 6px;
+    background: #e0ca51;
+    color: #111;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .generate:hover, .copy-btn:hover {
+    background: #c6b142;
+  }
+
+  /* Output Box */
+  .output {
+    background: #333;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 6px;
+    min-height: 22px;
+    color: #e0ca51;
+    font-weight: 600;
+    word-break: break-word;
+  }
+
+  @media (max-width: 880px) {
+    .container { width: 100%; max-width: 520px; }
+  }
+</style>
+</head><body>
+
+<!-- Toggle Buttons -->
 <div class="toggle-buttons">
   <button id="fieldBtn" class="active">توجيهات الميدان</button>
   <button id="jobBtn">توجيهات التوظيف</button>
-  <a href="https://xhhp1.github.io/anything/" target="_blank" class="report-btn">تقارير العمليات</a>
+  <button id="reportBtn">تقارير العمليات</button>
 </div>
 
-<!-- توجيهات الميدان -->
-<div class="container active" id="fieldContainer">
+<!-- =======================
+     Field Container (from first code)
+     ======================= -->
+<div class="container compact active" id="fieldContainer">
   <h1>🛠 توجيهات الميدان 🛠</h1>
   <h2>⚙️اختصر اسمك الميداني⚙️</h2>
 
@@ -204,6 +281,7 @@ label { display: block; font-size: 14px; margin: 6px 0; }
     <option value="اسطول متوسط بوليتو">اسطول متوسط بوليتو</option>
     <option value="اسطول متوسط جزيرة">اسطول متوسط جزيرة</option>
   </select>
+
   <label><input type="checkbox" id="minaTech"> فني ميناء</label>
   <label><input type="checkbox" id="masarat"> مسارات التعديل و التزويد</label>
   <input type="text" id="masarInput" placeholder="اكتب رقم المسار فقط مثال (4)" style="display:none;">
@@ -212,6 +290,7 @@ label { display: block; font-size: 14px; margin: 6px 0; }
     <option value="">اختر نوع وحدة التحكم</option>
     <option value="فني مركز تحكم">فني مركز تحكم</option>
     <option value="فني خدمات طرق">فني خدمات طرق</option>
+    <option value="مسؤول تحكم">مسؤول تحكم</option>
   </select>
 
   <!-- كود المعتمد -->
@@ -228,8 +307,10 @@ label { display: block; font-size: 14px; margin: 6px 0; }
   <button class="copy-btn" onclick="copyText('resultOutput')">🔗 اضغط هنا للنسخ 🔗</button>
 </div>
 
-<!-- توجيهات التوظيف -->
-<div class="container" id="jobContainer">
+<!-- =======================
+     Job Container (from first code)
+     ======================= -->
+<div class="container compact" id="jobContainer">
   <h1>📜 توجيهات التوظيف📜 </h1>
   <h2>📌اختصر توجيهك في التوظيف 📌</h2>
 
@@ -270,8 +351,190 @@ label { display: block; font-size: 14px; margin: 6px 0; }
   <button class="copy-btn" onclick="copyText('output')">🔗 اضغط هنا للنسخ 🔗</button>
 </div>
 
+<!-- =======================
+     Report Container (entire second file content)
+     ======================= -->
+<div class="container" id="reportContainer">
+  <h1>تقرير كراج الميكانيكي</h1>
+<form id="reportForm" onsubmit="return false;">
+    <div class="section-block">
+      <label>رقم التقرير:</label>
+      <input type="text" id="reportNumber" class="report-input" placeholder="مثال: 5" oninput="updatePreview()">
+    </div>
+
+    <div class="section-block">
+      <div class="time-row">
+        <label>من الساعة:</label>
+        <input type="text" id="fromTime" class="time-input" placeholder="01:00" maxlength="5" oninput="updatePreview()">
+        <select id="fromTimeAmPm" class="ampm-select" onchange="updatePreview()">
+          <option value="م">م</option>
+          <option value="ص">ص</option>
+        </select>
+      </div>
+      <div class="time-row">
+        <label>حتى الساعة:</label>
+        <input type="text" id="toTime" class="time-input" placeholder="02:00" maxlength="5" oninput="updatePreview()">
+        <select id="toTimeAmPm" class="ampm-select" onchange="updatePreview()">
+          <option value="م">م</option>
+          <option value="ص">ص</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Multiple unit sections -->
+    <div class="section-block">
+      <div class="group-title">قيادة الكراج:</div>
+      <div id="garageLead" class="units-list"></div>
+      <button type="button" class="add-unit-btn" onclick="addUnit('garageLead')">إضافة وحدة</button>
+    </div>
+
+    <div class="section-block">
+      <div class="group-title">مستشار القائد:</div>
+      <div id="adviser" class="units-list"></div>
+      <button type="button" class="add-unit-btn" onclick="addUnit('adviser')">إضافة وحدة</button>
+    </div>
+
+    <div class="section-block">
+      <div class="group-title">المشرف العام:</div>
+      <div id="generalSupervisor" class="units-list"></div>
+      <button type="button" class="add-unit-btn" onclick="addUnit('generalSupervisor')">إضافة وحدة</button>
+    </div>
+
+    <div class="section-block">
+      <div class="group-title">المشرف الميداني:</div>
+      <div id="fieldSupervisor" class="units-list"></div>
+      <button type="button" class="add-unit-btn" onclick="addUnit('fieldSupervisor')">إضافة وحدة</button>
+    </div>
+
+    <div class="section-block">
+      <div class="group-title">مشرفين المناطق:</div>
+      <div id="areaSupervisors" class="units-list"></div>
+      <button type="button" class="add-unit-btn" onclick="addUnit('areaSupervisors')">إضافة وحدة</button>
+    </div>
+
+    <div class="section-block">
+      <div class="group-title">مشرفين متدربين :</div>
+      <div id="normals" class="units-list"></div>
+      <button type="button" class="add-unit-btn" onclick="addUnit('normals')">إضافة وحدة</button>
+    </div>
+
+    <div class="section-block">
+      <div class="group-title">العمليات:</div>
+      <div id="operations" class="units-list"></div>
+      <button type="button" class="add-unit-btn" onclick="addUnit('operations')">إضافة وحدة</button>
+    </div>
+
+    <div class="section-block">
+      <div class="group-title">نائب العمليات:</div>
+      <div id="operationsDeputy" class="units-list"></div>
+      <button type="button" class="add-unit-btn" onclick="addUnit('operationsDeputy')">إضافة وحدة</button>
+    </div>
+
+    <div class="section-block">
+      <div class="group-title">مركز الاتصالات:</div>
+      <div id="communicationCenter" class="units-list"></div>
+      <button type="button" class="add-unit-btn" onclick="addUnit('communicationCenter')">إضافة وحدة</button>
+    </div>
+
+    <div class="section-block">
+      <div class="group-title">السيدات و المعتمدين:</div>
+      <div id="ladiesAndAuthorized" class="units-list"></div>
+      <button type="button" class="add-unit-btn" onclick="addUnit('ladiesAndAuthorized')">إضافة وحدة</button>
+    </div>
+
+    <div class="section-block">
+      <div class="group-title">الجزيرة:</div>
+      <div id="gezera" class="units-list"></div>
+      <button type="button" class="add-unit-btn" onclick="addUnit('gezera')">إضافة وحدة</button>
+    </div>
+
+    <div class="section-block">
+      <div class="group-title">بوليتو:</div>
+      <div id="bolito" class="units-list"></div>
+      <button type="button" class="add-unit-btn" onclick="addUnit('bolito')">إضافة وحدة</button>
+    </div>
+
+    <div class="section-block">
+      <div class="group-title">ساندي:</div>
+      <div id="sandy" class="units-list"></div>
+      <button type="button" class="add-unit-btn" onclick="addUnit('sandy')">إضافة وحدة</button>
+    </div>
+
+    <div class="section-block">
+      <div class="group-title">لوس:</div>
+      <div id="los" class="units-list"></div>
+      <button type="button" class="add-unit-btn" onclick="addUnit('los')">إضافة وحدة</button>
+    </div>
+
+    <div class="section-block">
+      <div class="group-title">ميناء لوس:</div>
+      <div id="losPort" class="units-list"></div>
+      <button type="button" class="add-unit-btn" onclick="addUnit('losPort')">إضافة وحدة</button>
+    </div>
+
+    <div class="section-block">
+      <div class="group-title">ميناء بوليتو:</div>
+      <div id="bolitoPort" class="units-list"></div>
+      <button type="button" class="add-unit-btn" onclick="addUnit('bolitoPort')">إضافة وحدة</button>
+    </div>
+
+    <div class="section-block">
+      <div class="group-title">خدمات الاسطول:</div>
+      <div class="fleet-count">
+        عدد:
+        <select id="fleetCount">
+          <option value="00">00</option>
+          <option value="01">01</option>
+          <option value="02">02</option>
+          <option value="03">03</option>
+          <option value="04">04</option>
+          <option value="05">05</option>
+          <option value="06">06</option>
+          <option value="07">07</option>
+          <option value="08">08</option>
+          <option value="09">09</option>
+          <option value="10">10</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="group-title">تنظيم سير تعديل و تزويد:</div>
+      <div id="trafficOrg" class="units-list"></div>
+      <button type="button" class="add-unit-btn" onclick="addUnit('trafficOrg')">إضافة وحدة</button>
+    </div>
+
+    <div class="section-block">
+      <div class="group-title">البحث والإنقاذ:</div>
+      <div id="rescue" class="units-list"></div>
+      <button type="button" class="add-unit-btn" onclick="addUnit('rescue')">إضافة وحدة</button>
+    </div>
+
+    <div style="margin-top:10px; display:flex; gap:8px; justify-content:flex-end; flex-wrap:wrap;">
+      <button type="button" onclick="exportReport()">تحديث التقرير</button>
+      <button type="button" onclick="copyReport()">نسخ التقرير</button>
+    </div>
+  </form>
+
+  <div class="export" style="margin-top:12px;">
+    <h2 style="color:#FFD700; text-align:center;">نموذج التقرير:</h2>
+    <pre id="reportPreview" class="report-output"></pre>
+  </div>
+  </form>
+
+  <div class="export" style="margin-top:12px;">
+    <h2 style="color:var(--gold); text-align:center;">نموذج التقرير:</h2>
+    <pre id="reportPreview" class="report-output"></pre>
+  </div>
+</div>
+
+<!-- =======================
+     JavaScript: merged and unified
+     ======================= -->
 <script>
-/* Helper utilities */
+/* --------------------------
+   Shared helpers (from first file)
+   -------------------------- */
 function isValidSelection(val) {
   return val && String(val).trim() !== "" && !String(val).trim().startsWith("اختر");
 }
@@ -308,22 +571,39 @@ function formatNumberPart(s){
   return digits ? ("G-" + digits) : "";
 }
 
-/* Tabs */
+/* --------------------------
+   Tab switching (extended)
+   -------------------------- */
 document.getElementById("fieldBtn").onclick = function(){
   document.getElementById("fieldContainer").classList.add("active");
   document.getElementById("jobContainer").classList.remove("active");
+  document.getElementById("reportContainer").classList.remove("active");
   this.classList.add("active");
   document.getElementById("jobBtn").classList.remove("active");
+  document.getElementById("reportBtn").classList.remove("active");
 };
 document.getElementById("jobBtn").onclick = function(){
   document.getElementById("jobContainer").classList.add("active");
   document.getElementById("fieldContainer").classList.remove("active");
+  document.getElementById("reportContainer").classList.remove("active");
   this.classList.add("active");
   document.getElementById("fieldBtn").classList.remove("active");
+  document.getElementById("reportBtn").classList.remove("active");
+};
+document.getElementById("reportBtn").onclick = function(){
+  document.getElementById("reportContainer").classList.add("active");
+  document.getElementById("fieldContainer").classList.remove("active");
+  document.getElementById("jobContainer").classList.remove("active");
+  this.classList.add("active");
+  document.getElementById("fieldBtn").classList.remove("active");
+  document.getElementById("jobBtn").classList.remove("active");
 };
 
-/* Setup */
+/* --------------------------
+   Field & Job setup (from first code)
+   -------------------------- */
 document.addEventListener("DOMContentLoaded", function () {
+  /* Field elements */
   const rankSelect = document.getElementById("rankSelect");
   const fleetToggle = document.getElementById("fleetToggle");
   const fleetBox = document.getElementById("fleetBox");
@@ -384,7 +664,6 @@ document.addEventListener("DOMContentLoaded", function () {
   if (koodToggle && koodOptions && numberField) {
     koodToggle.onchange = function () {
       koodOptions.style.display = this.checked ? "block" : "none";
-      // Notice: we NO LONGER clear number field when unchecking
     };
     koodOptions.onchange = function () {
       const val = this.value;
@@ -415,9 +694,15 @@ document.addEventListener("DOMContentLoaded", function () {
     numberFieldJob.oninput = function () { this.value = formatNumberPart(this.value); };
     numberFieldJob.onpaste = function () { setTimeout(()=> { numberFieldJob.value = formatNumberPart(numberFieldJob.value); }, 0); };
   }
+
+  /* Initialize Report section elements (from second file) */
+  // define addUnit/getUnits etc here or after - they exist below, so call the initial populate there
 });
 
-/* generateResult */
+/* --------------------------
+   generateResult (field) & generateNickname (job)
+   (from first code)
+   -------------------------- */
 function generateResult() {
   const name = (document.getElementById("nameInputField").value || "").trim();
   const number = (document.getElementById("numberInputField").value || "").trim();
@@ -475,7 +760,6 @@ function generateResult() {
   document.getElementById("resultOutput").innerText = parts.join(" | ");
 }
 
-/* generateNickname */
 function generateNickname() {
   const name = (document.getElementById("nameInput").value || "").trim();
   const number = (document.getElementById("numberInput").value || "").trim();
@@ -488,6 +772,191 @@ function generateNickname() {
 
   document.getElementById("output").innerText = [name, number, role].join(" | ");
 }
+
+/* --------------------------
+   Report script (from second file)
+   -------------------------- */
+function addUnit(areaId) {
+  const parent = document.getElementById(areaId);
+  if (!parent) return;
+  const unitDiv = document.createElement('div');
+  unitDiv.className = "unit-row";
+
+  const prefixSelect = document.createElement('select');
+  prefixSelect.className = 'unit-prefix';
+  [
+    {v: 'G', t: 'G'},
+    {v: 'H', t: 'H'},
+    {v: 'E', t: 'E'},
+    {v: 'P', t: 'P'},
+    {v: 'A', t: 'A'},
+    {v: 'F', t: 'F'},
+    {v: 'M', t: 'M'},
+    {v: 'R', t: 'R'},
+    {v: 'لا يوجد', t: 'لا يوجد'}
+  ].forEach(optObj=>{
+    const opt = document.createElement('option');
+    opt.value = optObj.v;
+    opt.textContent = optObj.t;
+    prefixSelect.appendChild(opt);
+  });
+
+  prefixSelect.onchange = function() {
+    if(this.value === 'لا يوجد') {
+      codeInput.value = '';
+      codeInput.disabled = true;
+      codeInput.classList.add('disabled-input');
+    } else {
+      codeInput.disabled = false;
+      codeInput.classList.remove('disabled-input');
+    }
+    updatePreview();
+  };
+
+  const codeInput = document.createElement('input');
+  codeInput.type = 'text';
+  codeInput.placeholder = 'رقم الوحدة (مثال: 012)';
+  codeInput.className = 'unit-code';
+  codeInput.oninput = updatePreview;
+
+  const removeBtn = document.createElement('button');
+  removeBtn.type = 'button';
+  removeBtn.className = 'remove-btn';
+  removeBtn.textContent = '×';
+  removeBtn.onclick = () => { parent.removeChild(unitDiv); updatePreview(); };
+
+  unitDiv.appendChild(prefixSelect);
+  unitDiv.appendChild(codeInput);
+  unitDiv.appendChild(removeBtn);
+  parent.appendChild(unitDiv);
+
+  updatePreview();
+}
+
+function getUnits(areaId) {
+  const parent = document.getElementById(areaId);
+  const units = [];
+  if (!parent) return units;
+  parent.querySelectorAll('.unit-row').forEach(unitRow => {
+    const prefix = unitRow.querySelector('.unit-prefix').value;
+    const code = (unitRow.querySelector('.unit-code').value || "").trim();
+    if(areaId === 'sandy' || areaId === 'bolito' || areaId === 'gezera' || areaId === 'los') {
+      if(prefix !== 'لا يوجد' && code) {
+        units.push(`${prefix}-${code}`); // الحرف ورقم الوحدة بدون @
+      } else if (code) {
+        units.push(code); // لو مفيش prefix
+      }
+    } else {
+      if(prefix !== 'لا يوجد' && code) {
+        units.push(`@${prefix}-${code}`);
+      } else if(code) {
+        units.push(code);
+      }
+    }
+  });
+  return units;
+}
+
+function generateLine(label, arr, emptyLabel, newLineAfterLabel = false) {
+  let filteredArr = arr.filter(v => v);
+  let out = newLineAfterLabel ? `${label}\n` : `${label} `;
+  if (filteredArr.length) {
+    out += filteredArr.join('\n');
+  } else {
+    out += emptyLabel || "لايوجد";
+  }
+  out += '\n\n';
+  return out;
+}
+
+function generateReport() {
+  const reportNumber = (document.getElementById('reportNumber') ? document.getElementById('reportNumber').value.trim() : "");
+  const fromTime = (document.getElementById('fromTime') ? document.getElementById('fromTime').value.trim() : "");
+  const fromTimeAmPm = (document.getElementById('fromTimeAmPm') ? document.getElementById('fromTimeAmPm').value : "");
+  const toTime = (document.getElementById('toTime') ? document.getElementById('toTime').value.trim() : "");
+  const toTimeAmPm = (document.getElementById('toTimeAmPm') ? document.getElementById('toTimeAmPm').value : "");
+  const fleetCount = (document.getElementById('fleetCount') ? document.getElementById('fleetCount').value : "00");
+
+  let report = `تم استلام التقرير الميداني لـكراج الميكانيكي\n\n`;
+  report += `تقرير رقم ( ${reportNumber} )\n\n`;
+  report += `من الساعه ${fromTime} (${fromTimeAmPm})\nحتى الساعه ${toTime} (${toTimeAmPm})\n\n`;
+
+  report += generateLine("قيادة الكراج:", getUnits('garageLead'));
+  report += generateLine("مستشار القائد:", getUnits('adviser'));
+  report += generateLine("المشرف العام:", getUnits('generalSupervisor'));
+  report += generateLine("المشرف الميداني:", getUnits('fieldSupervisor'));
+  report += generateLine("مشرفين المناطق:", getUnits('areaSupervisors'));
+  report += generateLine("مشرفين متدربين:", getUnits('normals'));
+  report += generateLine("العمليات:", getUnits('operations'));
+  report += generateLine("نائب العمليات:", getUnits('operationsDeputy'));
+  report += generateLine("مركز الاتصالات:", getUnits('communicationCenter'));
+  report += generateLine("السيدات و المعتمدين:", getUnits('ladiesAndAuthorized'));
+  report += generateLine("الجزيرة:", getUnits('gezera'), null, true);
+  report += generateLine("بوليتو:", getUnits('bolito'), null, true);
+  report += generateLine("ساندي:", getUnits('sandy'), null, true);
+  report += generateLine("لوس:", getUnits('los'), null, true);
+  report += `خدمات الاسطول :\nعدد / ${fleetCount}\n\n`;
+  report += generateLine("ميناء لوس:", getUnits('losPort'));
+  report += generateLine("ميناء بوليتو:", getUnits('bolitoPort'));
+  report += generateLine("تنظيم سير تعديل و تزويد:", getUnits('trafficOrg'));
+  report += generateLine("البحث والإنقاذ:", getUnits('rescue'));
+
+  return report;
+}
+
+function updatePreview() {
+  const el = document.getElementById('reportPreview');
+  if (!el) return;
+  el.textContent = generateReport();
+}
+
+function copyReport() {
+  const reportText = document.getElementById('reportPreview').textContent;
+  if (!reportText) return alert("لا يوجد تقرير للنسخ.");
+  navigator.clipboard.writeText(reportText).then(() => {
+    alert("تم نسخ التقرير بنجاح ✅");
+  }).catch(err => {
+    alert("حدث خطأ أثناء النسخ ❌");
+    console.error(err);
+  });
+}
+
+function exportReport() {
+  const report = generateReport();
+  document.getElementById('reportPreview').textContent = report;
+  // Note: original file created export link/file - omitted by original author; kept display update only
+}
+
+/* --------------------------
+   Initialize report units and listeners (run after definitions)
+   -------------------------- */
+(function initReportSection(){
+  // the sections that should have an initial "unit row" appended:
+  const sections = [
+    'garageLead','adviser','generalSupervisor','fieldSupervisor',
+    'areaSupervisors','operations','operationsDeputy','communicationCenter','ladiesAndAuthorized',
+    'rescue','trafficOrg','bolitoPort','losPort','sandy','bolito','normals','gezera','los'
+  ];
+  // add one unit row to each section (like the original)
+  sections.forEach(id => {
+    // only add if the element exists
+    const el = document.getElementById(id);
+    if (el) addUnit(id);
+  });
+
+  // wire up listeners for inputs used by updatePreview
+  const idsToWatch = ['fleetCount','fromTimeAmPm','toTimeAmPm','reportNumber','fromTime','toTime'];
+  idsToWatch.forEach(id=>{
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('change', updatePreview);
+    el.addEventListener('input', updatePreview);
+  });
+
+  // initial preview
+  updatePreview();
+})();
+
 </script>
-
-
+</body>
+</html>
